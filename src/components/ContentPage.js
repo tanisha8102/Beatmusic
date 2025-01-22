@@ -70,12 +70,17 @@ const ContentPage = () => {
   }, []);
 
   useEffect(() => {
-    // Initialize scroll position to the first original item
     if (featuredRowRef.current) {
-      const clientWidth = featuredRowRef.current.clientWidth;
-      featuredRowRef.current.scrollLeft = clientWidth;
+      // Ensure the total scrollable width is greater than the container
+      const containerWidth = featuredRowRef.current.offsetWidth;
+      const contentWidth = featuredRowRef.current.scrollWidth;
+  
+      if (contentWidth <= containerWidth) {
+        console.warn("Content width is less than or equal to the container width.");
+      }
     }
   }, []);
+  
 
   const handleCardClick = (index) => {
     setActiveIndex(index);
@@ -189,7 +194,7 @@ const ContentPage = () => {
       
     </div>
      {/* Audio Player */}
-     {currentSong && <SongPlayer song={currentSong} />}
+       {currentSong && <SongPlayer song={currentSong} />}
     </div>
   );
 };
