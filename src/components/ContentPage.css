@@ -1,3 +1,8 @@
+body {
+    margin: 0;
+    overflow-x: hidden;  /* Prevent unintended scroll propagation */
+}
+
 .content-page {
     flex: 1;
     background-color: #000000;
@@ -20,18 +25,29 @@
   
   .top-bar {
     display: flex;
-    gap: 10px;
+    gap: 5px;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    position: fixed; /* Fix the top bar */
+    top: 10px; /* Align it to the top */
+    left: 0; /* Align it to the left */
+    right: 0; /* Stretch it to the right */
+    height: 60px; /* Set a fixed height */
+    padding: 0 20px; /* Add some horizontal padding */
+    z-index: 1000; /* Ensure it stays above other elements */
+    margin-left: 300px;
+    background-color: black;
+
   }
   
   @media (max-width: 768px) {
     .top-bar {
       flex-direction: row; /* Ensure elements stay in a row */
       align-items: center; /* Center vertically */
-      justify-content: space-between; /* Distribute space horizontally */
-      width: 100%;
+      justify-content: space-between; /* Maintain spacing on smaller screens */
+      padding: 0 15px; /* Adjust padding */
+      width: 50%;
+      margin-left:170px ;
     }
   }
   
@@ -43,7 +59,7 @@
     padding: 10px 15px;
     flex: 1; /* Take available space */
     margin-right: 10px; /* Space between search bar and profile icon */
-    width: 600px;
+    width: 400px;
   }
   
   .search-bar input {
@@ -104,20 +120,23 @@
 
 
   /* Cards container */
-  .cards-container {
-   display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  height: 300px;
-  width: 100%;
-  perspective: 1000px; /* Add depth */
-  margin-top: 20px; /* Space below header */
-  flex-wrap: wrap; /* Allow wrapping for smaller screens */
+.cards-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 300px;
+    width: 100%;
+    perspective: 1000px; /* Add depth */
+    margin-top: 80px; /* Space below header */
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+    margin-left: 400px;
   }
   
   /* Base card styles */
   .card {
+    background-size: cover; /* Ensure the image covers the entire card */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Don't repeat the image */
     width: 530px;
     height: 200px;
     border-radius: 20px;
@@ -127,6 +146,10 @@
     transition: transform 0.5s, opacity 0.5s, z-index 0.3s;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     opacity: 0.7;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 10px; /* Add padding to position content */
   }
   
   /* Center card (main focus) */
@@ -138,12 +161,12 @@
   
   /* Left stacked cards */
   .card.left-stacked {
-    transform: translateX(-100px) scale(1) rotateY(-10deg);
+    transform: translateX(-130px) scale(1) rotateY(-10deg);
     z-index: 4;
     opacity: 0.9;
   }
   .card.left-stacked.second {
-    transform: translateX(-160px) scale(0.9) rotateY(-10deg);
+    transform: translateX(-190px) scale(0.9) rotateY(-10deg);
     z-index: 3;
     opacity: 0.8;
   }
@@ -170,16 +193,23 @@
   
   /* Card content styles */
   .card-content {
-    text-align: center;
-    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
   }
   
+  /* Card number (top left) */
   .card-number {
     font-size: 22px;
     font-weight: bold;
-    margin-bottom: 10px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
   }
   
+  /* Card details */
   .card-details {
     text-transform: uppercase;
   }
@@ -187,56 +217,87 @@
   .card-title {
     font-size: 14px;
     font-weight: bold;
+    position: absolute;
+    bottom: 35px;
+    left: 15px;
+   
   }
   
   .card-subtitle {
     font-size: 18px;
     font-weight: bold;
+    position: absolute;
+    bottom: 10px;
+    left: 15px;
   }
   
   .card-volume {
     font-size: 14px;
     margin: 5px 0;
+    position: absolute;
+    bottom: 50px;
+    left: 15px;
   }
   
   .card-artist {
     font-size: 16px;
     font-weight: bold;
-  }
-  
-  /* Assign unique colors to cards */
-  .card:nth-child(1) {
-    background: linear-gradient(to right, #ff416c, #ff4b2b);
-  }
-  .card:nth-child(2) {
-    background: linear-gradient(to right, #42e695, #3bb2b8);
-  }
-  .card:nth-child(3) {
-    background: linear-gradient(to right, #ff7e5f, #feb47b);
-  }
-  .card:nth-child(4) {
-    background: linear-gradient(to right, #8a2387, #e94057, #f27121);
-  }
-  .card:nth-child(5) {
-    background: linear-gradient(to right, #4facfe, #00f2fe);
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
   }
   
   /* Responsive design */
   @media (max-width: 768px) {
-
     .cards-container {
-        margin-top: 30px; /* Increase margin for smaller screens */
-        height: auto; /* Adjust height to fit content */
-        justify-content: center;
-        align-items: flex-start; /* Align to top if content overflows */
-        margin-right: 100px;
-        position: relative;
-        left: -40px;
-      }
-
+      margin-top: 100px; /* Increase margin for smaller screens */
+      height: auto; /* Adjust height to fit content */
+      justify-content: center;
+      align-items: flex-start; /* Align to top if content overflows */
+      margin-right: 100px;
+      position: relative;
+      left: -350px;
+    
+    }
+  
     .card {
       width: 170px;
       height: 150px;
+      padding: 5px; /* Adjust padding for smaller cards */
+      background-size: cover; /* Ensure the image fits properly */
+      background-position: center; /* Center the image */
+    }
+  
+    .card-content {
+      padding: 5px; /* Adjust content padding for smaller cards */
+    }
+  
+    .card-number {
+      font-size: 14px;
+      top: 5px;
+      left: 5px;
+    }
+  
+    .card-details {
+      font-size: 12px;
+    }
+  
+    .card-title {
+      font-size: 10px;
+    }
+  
+    .card-subtitle {
+      font-size: 12px;
+    }
+  
+    .card-volume {
+      font-size: 10px;
+    }
+  
+    .card-artist {
+      font-size: 10px;
+      bottom: 5px;
+      right: 5px;
     }
   
     .card.left-stacked {
@@ -256,4 +317,116 @@
     }
   }
   
+  .featured-this-week {
+    margin: 20px 0;
+    text-align: center;
+    color: white;
   
+   
+}
+
+.featured-this-week h2 {
+    font-size: 24px;
+    margin-bottom: 30px;
+    margin-right: 300px;
+}
+
+/* Wrapper for the row to ensure fixed height */
+.featured-row-wrapper {
+  width: 100%;
+  overflow: hidden; /* Prevent vertical overflow */
+  position: relative;
+  height: 200px;
+}
+
+.featured-cards-container {
+  display: flex;
+    gap: 15px;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    overflow-y: hidden; /* Prevent vertical scrolling */
+    scroll-behavior: smooth; /* Smooth scrolling effect */
+    padding: 10px;
+    height: 100%; /* Match parent height */
+    box-sizing: border-box;
+    min-width: 100%; /* Ensure the container stretches for horizontal scroll */
+    white-space: nowrap; /* Prevent wrapping of child cards */
+    will-change: transform;
+    
+    
+    /* Hide scrollbar */
+    scrollbar-width: none; /* For Firefox */
+}
+
+.featured-cards-container::-webkit-scrollbar {
+  height: 8px; /* Adjust scrollbar height */
+  display: none;
+}
+
+.featured-cards-container::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.5); /* Scrollbar color */
+  border-radius: 10px; /* Rounded scrollbar */
+}
+
+.featured-cards-container::-webkit-scrollbar-track {
+  background: transparent; /* Transparent track */
+}
+
+.featured-card {
+  flex: 0 0 auto;
+  width: 150px;
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 10px;
+  color: white;
+}
+
+
+
+
+.featured-card-content {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 5px;
+}
+
+.featured-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.featured-artist {
+    font-size: 14px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+
+  .featured-this-week{
+    margin-top: 200px;
+    position: relative;
+   
+  }
+
+  .featured-this-week h2{
+    margin-right: 400px;
+  }
+
+  .featured-row-wrapper {
+    height: auto; /* Adjust height for smaller screens */
+  }
+
+  .featured-cards-container {
+    gap: 10px;
+  
+  }
+
+  .featured-card {
+    width: 80px;
+    height: 80px;
+  }
+}
