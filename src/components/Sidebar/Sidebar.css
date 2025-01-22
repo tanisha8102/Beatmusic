@@ -3,17 +3,14 @@
   position: fixed; /* Sidebar is fixed in position */
   width: 220px;
   height: 100vh; /* Full height */
-  background-color: #000000;
+  background-color: #000000; /* Background color */
   color: white;
-  padding: 20px;
   display: flex;
   flex-direction: column;
-  overflow-y: scroll; /* Allow scrolling */
-  scrollbar-width: none; /* Firefox */
-  position: fixed;
+  overflow-y: auto; /* Use auto to avoid forced scrollbars */
+  scrollbar-width: none; /* Hide scrollbars in Firefox */
   top: 0;
   left: 0;
-  transform: translateX(0); /* Default: visible for desktop */
   transition: transform 0.3s ease; /* Smooth transition */
   z-index: 1000;
 }
@@ -30,12 +27,14 @@
 /* Sidebar header */
 .sidebar-header {
   display: flex;
- 
+  align-items: center; /* Center items vertically */
   gap: 10px;
   padding: 10px 20px;
-
-  z-index: 1001; 
-  margin-bottom: 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1001;
+  background-color: #000000; /* Match sidebar background */
+  height: 50px;
 }
 
 .sidebar-header img {
@@ -54,11 +53,15 @@
 /* Menu sections */
 
 .sidebar-menu{
-  margin-top: 50px;
+  flex: 1; 
+  margin-top: 20px;
+  justify-content: center;
 }
 
 .menu-section {
   margin-bottom: 20px;
+  padding-left: 20px;
+ 
 }
 
 .menu-section h3 {

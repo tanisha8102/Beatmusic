@@ -1,0 +1,210 @@
+.song-player {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 10px;
+    width: 100%;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-left: 60px;
+    position: relative;
+    bottom: 0; /* Ensures player stays at the bottom */
+}
+
+.album-cover {
+    width: 60px;
+    height: 60px;
+    border-radius: 50px;
+    flex-shrink: 0;
+    margin-right: 20px;
+}
+
+.player-header {
+    display: flex;
+    width: 200px;
+}
+
+.player-details {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.song-title {
+    font-size: 1em;
+    font-weight: bold;
+    color: #222;
+}
+
+.song-artist {
+    font-size: 0.7em;
+    color: #8a8989;
+}
+
+.player-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-grow: 2;
+    width: 100%; /* Ensures controls span full width */
+}
+
+.track-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-grow: 1;
+    width: 100%; /* Full width for small screens */
+}
+
+.current-time {
+    font-size: 0.8em;
+    color: #333;
+}
+
+.duration {
+    font-size: 0.8em;
+    color: #333;
+}
+
+.seek-bar {
+    flex-grow: 1;
+    max-width: 600px;
+    height: 4px;
+    background: linear-gradient(to right, #68eb2b 0%, #ddd 0%);
+    border-radius: 2px;
+    appearance: none;
+    outline: none;
+    position: relative;
+    cursor: pointer;
+}
+
+.seek-bar::-webkit-slider-thumb {
+    appearance: none;
+    width: 10px;
+    height: 10px;
+    background: #68eb2b;
+    border-radius: 50%;
+    position: relative;
+    z-index: 1;
+}
+
+.seek-bar::-moz-range-thumb {
+    width: 10px;
+    height: 10px;
+    background: #68eb2b;
+    border-radius: 50%;
+    position: relative;
+    z-index: 1;
+}
+
+.control-btn {
+    font-size: 1em; /* Normalize the icon size */
+    width: 40px; /* Increase the size for better visibility */
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    background-color: #68eb2b;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    line-height: 1; /* Ensures consistent centering */
+}
+
+@media (max-width: 600px) {
+    .song-player {
+        width: 100%; /* Ensures player fits width */
+        position: fixed; /* Sticks the player to the bottom */
+        left: 0;
+        bottom: 0;
+        padding: 5px 10px 10px; /* Add top padding for the seek bar */
+        box-sizing: border-box; /* Ensure padding is included in width */
+    }
+
+    .seek-bar {
+        position: absolute;
+        top: 0; /* Place at the top of the player */
+        left: 0;
+        width: 100%; /* Full width */
+        height: 5px; /* Adjust the height */
+        margin: 0;
+        z-index: 10; /* Ensure it appears above other elements */
+        background: linear-gradient(to right, #68eb2b 0%, #ddd 0%);
+        border-radius: 2px;
+    }
+
+    .seek-bar::-webkit-slider-thumb {
+        appearance: none;
+        width: 10px;
+        height: 10px;
+        background: #68eb2b;
+        border-radius: 50%;
+        position: relative;
+        z-index: 11; /* Ensure the thumb is above the track */
+    }
+
+    .seek-bar::-moz-range-thumb {
+        width: 10px;
+        height: 10px;
+        background: #68eb2b;
+        border-radius: 50%;
+        position: relative;
+        z-index: 11; /* Ensure the thumb is above the track */
+    }
+
+    .player-header,
+    .player-controls {
+        margin-top: 10px; /* Add spacing below the seek bar */
+        width: 100%;
+    }
+
+    .control-btn{
+        position: relative;
+        right: 0;
+    }
+
+    .album-cover {
+        width: 50px;
+        height: 50px;
+    }
+
+    .song-title {
+        font-size: 0.9em;
+    }
+
+    .song-artist {
+        font-size: 0.8em;
+    }
+
+    .track-info {
+        flex-direction: column;
+        align-items: flex-start; /* Aligns items at the start */
+    }
+
+    .current-time, .duration {
+        display: none;
+    }
+
+    .control-btn {
+    font-size: 1.2em; /* Normalize the icon size */
+    width: 40px; /* Increase the size for better visibility */
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    line-height: 1; /* Ensures consistent centering */
+    margin-left: 150px;
+    }
+}

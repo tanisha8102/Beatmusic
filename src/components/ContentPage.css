@@ -7,7 +7,6 @@ body {
     flex: 1;
     background-color: #000000;
     color: white;
-    padding: 20px;
     display: flex;
     flex-direction: column;
     margin: 0 auto; /* Center content */
@@ -35,7 +34,7 @@ body {
     height: 60px; /* Set a fixed height */
     padding: 0 20px; /* Add some horizontal padding */
     z-index: 1000; /* Ensure it stays above other elements */
-    margin-left: 300px;
+    margin-left: 270px;
     background-color: black;
 
   }
@@ -343,7 +342,7 @@ body {
   display: flex;
     gap: 15px;
     overflow-x: auto; /* Enable horizontal scrolling */
-    overflow-y: hidden; /* Prevent vertical scrolling */
+    overflow: hidden; /* Prevent vertical scrolling */
     scroll-behavior: smooth; /* Smooth scrolling effect */
     padding: 10px;
     height: 100%; /* Match parent height */
