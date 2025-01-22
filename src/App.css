@@ -1,0 +1,18 @@
+.app {
+  display: flex;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  background-color: #0e1116;
+  color: white;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000000; /* Ensure the whole page is black */
+  color: white;
+}
+
