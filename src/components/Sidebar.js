@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "./Sidebar.css";
+import "../Css files/Sidebar.css";
 import { FaHome, FaSearch, FaMicrophone, FaClock, FaHeart, FaUser, FaFolderPlus, FaTimes } from "react-icons/fa";
-import logo from "../../assets/logo/Beat-transparent.png";
+import logo from "../assets/logo/Beat-transparent.png";
 
 const Sidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -23,6 +23,7 @@ const Sidebar = () => {
         alt="Logo"
         className="sidebar-logo"
         onClick={toggleSidebar}
+        
       />
         <h1 className="sidebar-logo">BeatMusic</h1>
       </div>

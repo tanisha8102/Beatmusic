@@ -1,45 +1,54 @@
 import React, { useState, useRef, useEffect } from "react";
-import { FaUserCircle } from "react-icons/fa"; // Profile icon
-import "./ContentPage.css";
-import SongPlayer from "./SongPlayer";
-import img1 from "../assets/artist/arijit.jpg";
-import img2 from "../assets/artist/justin.jpg";
-import img3 from "../assets/artist/rahman.jpg";
-// import img4 from "../assets/artist/sonu.jpg";
-import img5 from "../assets/artist/taylor.jpg";
-import img6 from "../assets/artist/diljit1.jpg";
-import cover1 from "../assets/cover-feature-album/lover_diljit.jpg"
-import cover2 from "../assets/cover-feature-album/ranjhna.jpeg"
-import cover3 from "../assets/cover-feature-album/shake_it-off.jpeg"
-import cover4 from "../assets/cover-feature-album/stay.jpg"
-import cover5 from "../assets/cover-feature-album/tumse_milke.jpg"
-import audio from "../assets/songs/128-Raanjhanaa - Raanjhanaa 128 Kbps.mp3"
-import audio1 from "../assets/songs/Lover.mp3"
-import audio2 from "../assets/songs/shake_it_off.mp3"
-import audio3 from "../assets/songs/Stay(PagalNew.Com.Se).mp3"
-import audio4 from "../assets/songs/Tumse Milke Dil Ka Main Hoon Na 128 Kbps.mp3"
+import "../../Css files/ContentPage.css";
+import TopBar from "../../components/TopBar";
+import SongPlayer from "../../components/SongPlayer";
+import { artistImages, coverImages, playlistImages } from "../../assets/images";
+import { useNavigate } from "react-router-dom";
 
 
 const cards = [
-  { id: 1, title: "CHAPTER 1", volume: "VOL 1", artist: "MARIZU", backgroundImage: img6 },
-  { id: 2, title: "CHAPTER 2", volume: "VOL 2", artist: "JOHN DOE", backgroundImage: img1 },
-  { id: 3, title: "CHAPTER 3", volume: "VOL 3", artist: "JANE DOE", backgroundImage: img3 },
-  { id: 4, title: "CHAPTER 4", volume: "VOL 4", artist: "SMITH", backgroundImage: img2 },
-  { id: 5, title: "CHAPTER 5", volume: "VOL 5", artist: "DOE SMITH", backgroundImage: img5 },
+  { id: 1, title: "CHAPTER 1", volume: "VOL 1", artist: "MARIZU", backgroundImage: artistImages.diljit },
+  { id: 2, title: "CHAPTER 2", volume: "VOL 2", artist: "JOHN DOE", backgroundImage: artistImages.arijit },
+  { id: 3, title: "CHAPTER 3", volume: "VOL 3", artist: "JANE DOE", backgroundImage: artistImages.rahman },
+  { id: 4, title: "CHAPTER 4", volume: "VOL 4", artist: "SMITH", backgroundImage: artistImages.justin },
+  { id: 5, title: "CHAPTER 5", volume: "VOL 5", artist: "DOE SMITH", backgroundImage: artistImages.taylor },
 ];
 
 const featured = [
-  { id: 2, title: "Stay", artist: "Justin Bieber", backgroundImage: cover4 ,audioSrc:audio3 },
-  { id: 4, title: "Tumse Milke", artist: "AR Rahman", backgroundImage: cover5,audioSrc:audio4 },
-  { id: 3, title: "Shake Tt off", artist: "Taylor", backgroundImage: cover3,audioSrc: audio2 },
-  { id: 1, title: "Ranjhana", artist: "Sonu Nigam", backgroundImage: cover2 ,audioSrc:audio},
-  { id: 5, title: "Lover", artist: "Diljit", backgroundImage: cover1 ,audioSrc: audio1},
+  { id: 2, title: "Stay", artist: "Justin Bieber", backgroundImage: coverImages.stay, audioSrc: "/assets/songs/Stay(PagalNew.Com.Se).mp3" },
+  { id: 4, title: "Tumse Milke", artist: "AR Rahman", backgroundImage: coverImages.tumseMilke, audioSrc: "/assets/songs/Tumse Milke Dil Ka Main Hoon Na 128 Kbps.mp3" },
+  { id: 3, title: "Shake It Off", artist: "Taylor", backgroundImage: coverImages.shakeItOff, audioSrc: "/assets/songs/shake_it_off.mp3" },
+  { id: 1, title: "Ranjhana", artist: "Sonu Nigam", backgroundImage: coverImages.ranjhna, audioSrc: "/assets/songs/128-Raanjhanaa - Raanjhanaa 128 Kbps.mp3" },
+  { id: 5, title: "Lover", artist: "Diljit", backgroundImage: coverImages.lover, audioSrc: "/assets/songs/Lover.mp3" },
+];
+
+const popularPlaylists = [
+  { id: 1, title: "Cold Play", backgroundImage: playlistImages.coldlay },
+  { id: 2, title: "Old is gold", backgroundImage: playlistImages.oldisgold },
+  { id: 3, title: "Punjabi Hit", backgroundImage: playlistImages.punjabi },
+  { id: 4, title: "Party Hits", backgroundImage: playlistImages.partyHits },
+  { id: 5, title: "Happy Vibes", backgroundImage: playlistImages.happy },
+  { id: 6, title: "Sad Hits", backgroundImage: playlistImages.sadHits },
 ];
 
 const ContentPage = () => {
   const [activeIndex, setActiveIndex] = useState(2); // Initially set the 3rd card as active (index 2)
   const featuredRowRef = useRef(null);
   const [currentSong, setCurrentSong] = useState(null);
+  const popularRowRef = useRef(null);
+  const navigate = useNavigate();
+
+  const handlePlaylistClick = (playlist) => {
+    navigate("/playlist", { state: playlist }); // Pass the clicked playlist's data
+  };
+  
+
+  // const handleScrollPopular = (direction) => {
+  //   if (popularRowRef.current) {
+  //     const scrollAmount = 300; // Adjust scroll amount as needed
+  //     popularRowRef.current.scrollLeft += direction === "left" ? -scrollAmount : scrollAmount;
+  //   }
+  // };
 
   const clonedFeatured = [
     featured[featured.length - 1], // Clone last item to the start
@@ -137,16 +146,7 @@ const ContentPage = () => {
 
   return (
     <div className="content-page">
-      <div className="top-bar">
-        <div className="search-bar">
-          <input type="text" placeholder="Search for songs, artists etc..." />
-        </div>
-        <div className="auth-buttons">
-          <button className="sign-in-btn">Sign In</button>
-          <button className="sign-up-btn">Sign Up</button>
-          <FaUserCircle className="profile-icon" />
-        </div>
-      </div>
+     <TopBar />
 
       {/* Cards Container */}
       <div className="cards-container">
@@ -190,6 +190,22 @@ const ContentPage = () => {
             ))}
           </div>
         </div>
+
+        {/* Popular Playlist Section */}
+        <div className="popular-playlists">
+  <h2>Popular Playlists</h2>
+  <div className="popular-row" ref={popularRowRef}>
+    {popularPlaylists.map((playlist) => (
+      <div
+        key={playlist.id}
+        className="popular-card"
+        style={{ backgroundImage: `url(${playlist.backgroundImage})` }}
+        onClick={() => handlePlaylistClick(playlist)} // Navigate on click
+      ></div>
+    ))}
+  </div>
+</div>;
+
       
       
     </div>

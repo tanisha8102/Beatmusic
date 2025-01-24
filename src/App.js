@@ -1,14 +1,21 @@
 import React from "react";
-import Sidebar from "./components/Sidebar/Sidebar";
-import ContentPage from "./components/ContentPage"; // Import the new content page
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Sidebar from "./components/Sidebar";
+import ContentPage from "./pages/Content/ContentPage";
+import Playlist from "./pages/Playlist/Playlist";
 import "./App.css";
 
 function App() {
   return (
-    <div className="app">
-      <Sidebar />
-      <ContentPage />
-    </div>
+    <Router>
+      <div className="app">
+        <Sidebar />
+        <Routes>
+          <Route path="/" element={<ContentPage />} />
+          <Route path="/playlist" element={<Playlist />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

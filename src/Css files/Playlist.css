@@ -1,0 +1,368 @@
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom right, #000000, #000000);
+  color: #333;
+  box-sizing: border-box;
+  overflow-x: hidden; /* Prevent horizontal scrolling from layout shifts */
+
+}
+
+.playlist-container {
+  width: 100%;
+  margin: 0 auto; /* Center align container */
+  background: white;
+  overflow: hidden;
+}
+
+.header {
+  padding: 20px;
+  text-align: center;
+  background: linear-gradient(to right, #000000, #000000);
+  color: white;
+}
+
+.header-content {
+  margin-top: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.header img {
+  width: 200px;
+  height: auto;
+  border-radius: 12px;
+}
+
+.header-details {
+  text-align: left;
+  flex: 1;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.header p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+.play-button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: rgb(0, 0, 0);
+  border: 1px solid #68eb2b;
+  color: #68eb2b;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.play-button:hover {
+  background-color: #68eb2b;
+  border: 1px solid #000000;
+  color: #000000;
+}
+
+.play-icon {
+  font-size: 1rem;
+}
+
+/* Add space between header and playlist section */
+.playlist {
+  margin-top: 100px;
+  padding: 20px 0;
+  background: white;
+  width: 100%;
+}
+
+/* Table wrapper */
+.full-width-table {
+  width: 100%;
+  margin: 0 auto;
+  background-color: black; /* Black background for the container */
+  overflow-x: auto;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  background-color: black; /* Black background */
+  color: white; /* White text for contrast */
+}
+
+table th,
+table td {
+ padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #333; /* Dark border for subtle contrast */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: white; /* White text */
+}
+
+table td{
+  font-size: 0.9rem;
+  border: none;
+  color: #e4e1e1;
+}
+
+table th {
+  font-size: 0.9rem;
+  border-bottom: 1px solid #ddd;
+  color: #696868;
+}
+
+table tr:hover {
+  background: #cacaca;
+}
+
+table th:last-child,
+table td:last-child {
+  text-align: center;
+}
+
+/* Heart icon styles */
+.icon {
+  cursor: pointer;
+  text-align: center;
+}
+
+.heart-icon {
+  font-size: 1.4rem;
+  transition: color 0.3s ease;
+}
+
+.heart-icon.red {
+  color: red;
+}
+
+.heart-icon.white {
+  color: gray;
+}
+
+table tr:hover {
+  background: rgba(89, 88, 88, 0.5); /* Adjust the alpha (0.5) for desired transparency */
+}
+
+
+.song-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.song-thumbnail {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px; /* Rounded corners */
+  margin-right: 10px; /* Space between image and title */
+  vertical-align: middle; /* Align image with text */
+}
+
+.song-title {
+  vertical-align: middle; /* Align title with image */
+  font-size: 1rem;
+  font-weight: bold;
+  color: rgb(237, 237, 237);
+}
+
+/* Keep large screen layout unchanged */
+@media (min-width: 768px) {
+  .song-thumbnail {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+
+  .song-title {
+    vertical-align: middle;
+    font-size: 1rem;
+    font-weight: bold;
+    color: rgb(228, 225, 225);
+  }
+
+  .song-artist {
+    font-size: 0.9rem;
+    color: gray;
+    margin-top: 4px;
+    display: block;
+    display: none;
+  }
+
+  table td:nth-child(1) {
+    display: flex;
+    align-items: center;
+  }
+
+  table td:nth-child(1) .song-artist {
+    margin-top: 4px;
+  }
+  .large-only {
+    display: table-cell; /* Show artist in its separate column */
+  }
+  .song-info .song-artist {
+    display: none; /* Hide artist below title for large screens */
+  }
+}
+
+/* For smaller screens */
+@media (max-width: 767px) {
+  .playlist-container {
+    position: relative;
+    left: -130px;
+    width: calc(100% + 90px);
+  }
+
+  .header-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .header img {
+    width: 150px;
+    margin-bottom: 15px;
+  }
+
+  .header-details {
+    text-align: center;
+  }
+
+  .header h1 {
+    font-size: 1.6rem;
+  }
+
+  .header p {
+    font-size: 0.8rem;
+  }
+
+  .song-title{
+    color: #f5f5f5;
+  }
+
+  .play-button {
+    width: 120px;
+    font-size: 0.9rem;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+  }
+
+  .full-width-table {
+    width: calc(100% + 230px);
+    margin: 0;
+    padding: 0;
+    position: relative;
+    left: -195px;
+    background-color: #000000;
+  }
+
+  .full-width-table {
+    width: calc(100% + 230px);
+    margin: 0;
+    padding: 0;
+    position: relative;
+    left: -195px;
+    background-color: #000000;
+  }
+
+  .full-width-table table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    border: none;
+    background-color: #000000; /* Ensure table background is black */
+  }
+
+  table thead {
+    display: none;
+  }
+
+  table tr {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    color: #ddd;
+    background-color: #000000; /* Set row background to black */
+  }
+
+  table td {
+    display: block;
+    width: 100%;
+    text-align: left;
+    border-bottom: none; /* Remove the line below each row */
+    font-size: 0.9rem;
+    color: #ddd;
+    background-color: #000000; /* Set cell background to black */
+  }
+
+  /* Stack artist below title and keep title next to image */
+  table td:nth-child(1) {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  table td .song-thumbnail {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    margin-right: 10px; /* Keep space between image and title */
+  }
+
+  table td .song-title {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+  table td .song-artist {
+    font-size: 0.8rem;
+    color: gray;
+    margin-top: 4px; /* Space between title and artist */
+  }
+
+  /* Hide artist column */
+  table td:nth-child(2) {
+    display: none;
+  }
+
+  /* Hide time and favorite columns */
+  table td:nth-child(3),
+  table td:nth-child(4) {
+    display: none;
+  }
+
+  .song-artist {
+    display: block; /* Show artist below title for small screens */
+    font-size: 0.8rem;
+    margin-top: 4px; /* Space between title and artist */
+  }
+
+  .large-only {
+    display: none; /* Hide the artist column for small screens */
+  }
+
+  
+}

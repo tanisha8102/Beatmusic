@@ -22,101 +22,6 @@ body {
     }
 }
 
-.top-bar {
-  display: flex;
-  gap: 5px;
-  justify-content: space-between;
-  align-items: center;
-  position: fixed; /* Fix the top bar */
-  top: 10px; /* Align it to the top */
-  left: 0; /* Align it to the left */
-  right: 0; /* Stretch it to the right */
-  height: 60px; /* Set a fixed height */
-  padding: 0 20px; /* Add some horizontal padding */
-  z-index: 1000; /* Ensure it stays above other elements */
-  margin-left: 270px;
-  background-color: black;
-
-}
-
-@media (max-width: 768px) {
-  .top-bar {
-    flex-direction: row; /* Ensure elements stay in a row */
-    align-items: center; /* Center vertically */
-    justify-content: space-between; /* Maintain spacing on smaller screens */
-    padding: 0 15px; /* Adjust padding */
-    width: 50%;
-    margin-left:170px ;
-  }
-}
-
-.search-bar {
-  display: flex;
-  align-items: center;
-  background-color: #1a1a1c;
-  border-radius: 20px;
-  padding: 10px 15px;
-  flex: 1; /* Take available space */
-  margin-right: 10px; /* Space between search bar and profile icon */
-  width: 400px;
-}
-
-.search-bar input {
-  background-color: transparent;
-  border: none;
-  color: white;
-  outline: none;
-  font-size: 14px;
-  width: 100%;
-}
-
-.auth-buttons {
-  display: flex;
-  align-items: center;
-  gap: 10px; /* Space between items */
-}
-
-.auth-buttons button {
-  background-color: transparent;
-  border: 2px solid #68eb2b; /* Green border */
-  color: #68eb2b;
-  padding: 8px 15px;
-  font-size: 14px;
-  border-radius: 20px; /* Rounded buttons */
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.auth-buttons button:hover {
-  background-color: #68eb2b;
-  color: #000000; /* Black text on hover */
-}
-
-.auth-buttons .profile-icon {
-  display: none; /* Hidden by default (large screens) */
-}
-
-@media (max-width: 768px) {
-  .auth-buttons {
-    flex: 0; /* Prevent stretching */
-  }
-
-  .auth-buttons .profile-icon {
-    display: block; /* Show the profile icon */
-    font-size: 24px;
-    color: #68eb2b;
-    cursor: pointer;
-  }
-
-  .auth-buttons button {
-    display: none; /* Hide buttons on small screens */
-  }
-
-  .search-bar{
-      width: 80px;
-  }
-}
-
 
 /* Cards container */
 .cards-container {
@@ -428,4 +333,89 @@ color: white;
   width: 80px;
   height: 80px;
 }
+}
+
+/* Popular playlist */
+
+.popular-playlists {
+  margin: 20px 0;
+  padding: 0 20px;
+  color: white;
+  position: relative;
+}
+
+.popular-playlists h2 {
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.popular-row {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 15px;
+  padding: 10px 0;
+}
+
+.popular-card {
+  min-width: 150px;
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 15px;
+  position: relative;
+  flex-shrink: 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.popular-card:hover {
+  transform: scale(1.05);
+}
+
+.popular-title {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.scroll-buttons {
+  position: absolute;
+  top: 0;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.scroll-buttons button {
+  background-color: #222;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.scroll-buttons button:hover {
+  background-color: #444;
+}
+
+.scroll-buttons button:focus {
+  outline: none;
+}
+
+@media (max-width: 768px) {
+
+  .popular-card {
+    min-width: 100px;
+    height: 100px;
+
+
+}
+
 }

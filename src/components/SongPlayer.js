@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import "./SongPlayer.css";
+import "../Css files/SongPlayer.css";
 
 const SongPlayer = ({ song }) => {
   const audioRef = useRef(null);
