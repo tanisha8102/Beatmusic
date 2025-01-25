@@ -1,11 +1,16 @@
 import React, { useRef, useState, useEffect } from "react";
 import "../Css files/SongPlayer.css";
+import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import PauseIcon from '@mui/icons-material/Pause';
 
 const SongPlayer = ({ song }) => {
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [liked, setLiked] = useState(false); // State for the like button
 
   const togglePlayPause = () => {
     if (isPlaying) {
@@ -14,6 +19,10 @@ const SongPlayer = ({ song }) => {
       audioRef.current.play();
     }
     setIsPlaying(!isPlaying);
+  };
+
+  const toggleLike = () => {
+    setLiked(!liked); // Toggle like state
   };
 
   const handleAudioTimeUpdate = () => {
@@ -63,7 +72,7 @@ const SongPlayer = ({ song }) => {
           className="album-cover"
         />
         <div className="player-details">
-          <span className="song-title">{song?.title || "No Song Selected"}</span>
+          <span className="song-player-title">{song?.title || "No Song Selected"}</span>
           <span className="song-artist">{song?.artist || "Unknown Artist"}</span>
         </div>
       </div>
@@ -74,9 +83,14 @@ const SongPlayer = ({ song }) => {
         onLoadedMetadata={handleAudioLoadedMetadata}
       />
       <div className="player-controls">
-        <button onClick={togglePlayPause} className="control-btn">
-          {isPlaying ? "⏸" : "▶"}
-        </button>
+      <button onClick={togglePlayPause} className="control-btn">
+        {isPlaying ? (
+          <PauseIcon sx={{ fontSize: 30, color: "white" }} />
+        ) : (
+          <PlayArrowIcon sx={{ fontSize: 30, color: "white" }} />
+        )}
+      </button>
+
         <div className="track-info">
           <span className="current-time">{formatTime(currentTime)}</span>
           <input
@@ -86,6 +100,10 @@ const SongPlayer = ({ song }) => {
             onChange={handleSeek}
           />
           <span className="duration">{formatTime(duration)}</span>
+          {/* Add Like Button */}
+          <button onClick={toggleLike} className={`like-btn ${liked ? "liked" : ""}`}>
+            {liked ? <CheckCircleIcon sx={{ fontSize: 30}} /> : <AddCircleOutlineOutlinedIcon sx={{ fontSize: 30 }} />}
+          </button>
         </div>
       </div>
     </div>

@@ -228,7 +228,7 @@ table tr:hover {
 @media (max-width: 767px) {
   .playlist-container {
     position: relative;
-    left: -130px;
+    left: -160px;
     width: calc(100% + 90px);
   }
 
@@ -301,7 +301,6 @@ table tr:hover {
   table tr {
     display: block;
     width: 100%;
-    margin-bottom: 10px;
     padding: 10px;
     box-sizing: border-box;
     color: #ddd;
@@ -309,6 +308,7 @@ table tr:hover {
   }
 
   table td {
+    position: relative;
     display: block;
     width: 100%;
     text-align: left;
@@ -362,6 +362,21 @@ table tr:hover {
 
   .large-only {
     display: none; /* Hide the artist column for small screens */
+  }
+
+  table tr:hover {
+    background: none; /* Adjust the alpha (0.5) for desired transparency */
+  }
+
+  .menu-icon {
+    display: none;
+  }
+
+  /* Show the menu icon for small screens */
+  .menu-icon-small {
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
   }
 
   

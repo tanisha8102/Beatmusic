@@ -4,6 +4,11 @@ import TopBar from "../../components/TopBar";
 import SongPlayer from "../../components/SongPlayer";
 import { artistImages, coverImages, playlistImages } from "../../assets/images";
 import { useNavigate } from "react-router-dom";
+import audio from "../../assets/songs/Stay(PagalNew.Com.Se).mp3"
+import audio1 from "../../assets/songs/Tumse Milke Dil Ka Main Hoon Na 128 Kbps.mp3"
+import audio2 from "../../assets/songs/shake_it_off.mp3"
+import audio3 from "../../assets/songs/128-Raanjhanaa - Raanjhanaa 128 Kbps.mp3"
+import audio4 from "../../assets/songs/Lover.mp3"
 
 
 const cards = [
@@ -15,11 +20,11 @@ const cards = [
 ];
 
 const featured = [
-  { id: 2, title: "Stay", artist: "Justin Bieber", backgroundImage: coverImages.stay, audioSrc: "/assets/songs/Stay(PagalNew.Com.Se).mp3" },
-  { id: 4, title: "Tumse Milke", artist: "AR Rahman", backgroundImage: coverImages.tumseMilke, audioSrc: "/assets/songs/Tumse Milke Dil Ka Main Hoon Na 128 Kbps.mp3" },
-  { id: 3, title: "Shake It Off", artist: "Taylor", backgroundImage: coverImages.shakeItOff, audioSrc: "/assets/songs/shake_it_off.mp3" },
-  { id: 1, title: "Ranjhana", artist: "Sonu Nigam", backgroundImage: coverImages.ranjhna, audioSrc: "/assets/songs/128-Raanjhanaa - Raanjhanaa 128 Kbps.mp3" },
-  { id: 5, title: "Lover", artist: "Diljit", backgroundImage: coverImages.lover, audioSrc: "/assets/songs/Lover.mp3" },
+  { id: 2, title: "Stay", artist: "Justin Bieber", backgroundImage: coverImages.stay, audioSrc: audio },
+  { id: 4, title: "Tumse Milke", artist: "AR Rahman", backgroundImage: coverImages.tumseMilke, audioSrc: audio1},
+  { id: 3, title: "Shake It Off", artist: "Taylor", backgroundImage: coverImages.shakeItOff, audioSrc: audio2 },
+  { id: 1, title: "Ranjhana", artist: "Sonu Nigam", backgroundImage: coverImages.ranjhna, audioSrc: audio3 },
+  { id: 5, title: "Lover", artist: "Diljit", backgroundImage: coverImages.lover, audioSrc: audio4 },
 ];
 
 const popularPlaylists = [
@@ -204,7 +209,7 @@ const ContentPage = () => {
       ></div>
     ))}
   </div>
-</div>;
+</div>
 
       
       

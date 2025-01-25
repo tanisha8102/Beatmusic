@@ -4,10 +4,9 @@
     justify-content: space-between;
     align-items: center;
     position: fixed;
-    top: 10px;
-    left:200px;
+    left:180px;
     right: 0;
-    height: 60px;
+    height: 70px;
     padding: 0 20px;
     z-index: 1000;
     background-color: black;

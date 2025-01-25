@@ -1,38 +1,37 @@
 import React, { useState } from "react";
 import "../../Css files/Playlist.css";
 import TopBar from "../../components/TopBar";
+import SongPlayer from "../../components/SongPlayer";
 import { FaPlay, FaHeart } from "react-icons/fa";
 import { useLocation } from "react-router-dom";
+import playlistsData from "../../components/PlaylistData";
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+
 
 function Playlist() {
-  const [favorites, setFavorites] = useState([false, false, false, false, false]);
+  const [favorites, setFavorites] = useState([]);
+  const [currentSong, setCurrentSong] = useState(null);
   const location = useLocation();
-  const playlistData = location.state; 
-
-  const songs = [
-    { id: 1, title: "Flowers in Your Hair", artist: "The Lumineers", time: "1:50" },
-    { id: 2, title: "Classy Girls", artist: "The Lumineers", time: "2:45" },
-    { id: 3, title: "Submarines", artist: "The Lumineers", time: "2:43" },
-    { id: 4, title: "Dead Sea", artist: "The Lumineers", time: "4:07" },
-    { id: 5, title: "Ho Hey", artist: "The Lumineers", time: "2:43" },
-  ];
+  const playlistData = playlistsData.find((playlist) => playlist.id === location.state.id);
 
   const toggleFavorite = (index) => {
     setFavorites((prev) => prev.map((fav, i) => (i === index ? !fav : fav)));
   };
 
+  const handleSongClick = (song) => {
+    setCurrentSong(song); // Set the selected song to play
+  };
+
   return (
     <div>
       <TopBar />
-
-      {/* Header Section */}
       <div className="playlist-container">
         <div className="header">
           <div className="header-content">
             <img src={playlistData.backgroundImage} alt="Album Cover" />
             <div className="header-details">
               <h1>{playlistData.title}</h1>
-              <p>2023 • 5 songs • 15:30 • Various Artists</p>
+              <p>2023 • {playlistData.songs.length} songs • Various Artists</p>
               <button className="play-button">
                 <FaPlay className="play-icon" /> Play
               </button>
@@ -41,7 +40,6 @@ function Playlist() {
         </div>
       </div>
 
-      {/* Playlist Table */}
       <div className="full-width-table">
         <table>
           <thead>
@@ -53,12 +51,12 @@ function Playlist() {
             </tr>
           </thead>
           <tbody>
-            {songs.map((song, index) => (
-              <tr key={song.id}>
+            {playlistData.songs.map((song, index) => (
+              <tr key={song.id} onClick={() => handleSongClick(song)}>
                 <td>
                   <img
-                    src={playlistData.backgroundImage} // Use playlist cover for all songs
-                    alt="Song Thumbnail"
+                    src={song.backgroundImage || "default-cover.jpg"}
+                    alt={`${song.title} Thumbnail`}
                     className="song-thumbnail"
                   />
                   <div className="song-info">
@@ -68,7 +66,13 @@ function Playlist() {
                 </td>
                 <td className="large-only">{song.artist}</td>
                 <td>{song.time}</td>
-                <td className="icon" onClick={() => toggleFavorite(index)}>
+                <td
+                  className="icon"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    toggleFavorite(index);
+                  }}
+                >
                   {favorites[index] ? (
                     <FaHeart className="heart-icon red" />
                   ) : (
@@ -80,6 +84,8 @@ function Playlist() {
           </tbody>
         </table>
       </div>
+
+      {currentSong && <SongPlayer song={currentSong} />}
     </div>
   );
 }
