@@ -62,7 +62,7 @@
       flex-direction: row;
       justify-content: space-between;
       padding: 0 15px;
-      width: 40%;
+      width: 52%;
       right: 200px;
       top: 0;
      
@@ -72,6 +72,7 @@
       font-size: 24px;
       color: #68eb2b;
       cursor: pointer;
+      margin-right: 10px;
     }
   
     .auth-buttons button {
@@ -80,8 +81,8 @@
   
     .search-bar {
       margin-left: 0;
-      width: 100px;
-      margin-right: 0;
+      width: 80px;
+      margin-right: 10;
     }
   }
   

@@ -1,6 +1,5 @@
 body {
   margin: 0;
-  overflow-x: hidden;  /* Prevent unintended scroll propagation */
 }
 
 .content-page {
@@ -221,125 +220,120 @@ body {
   }
 }
 
+/* Featured This Week Section */
 .featured-this-week {
   margin: 20px 0;
-  text-align: center;
-  color: white;
-
- 
-}
-
-.featured-this-week h2 {
-  font-size: 24px;
-  margin-bottom: 30px;
-  margin-right: 300px;
-}
-
-/* Wrapper for the row to ensure fixed height */
-.featured-row-wrapper {
-width: 100%;
-overflow: hidden; /* Prevent vertical overflow */
-position: relative;
-height: 200px;
-}
-
-.featured-cards-container {
-display: flex;
-  gap: 15px;
-  overflow-x: auto; /* Enable horizontal scrolling */
-  overflow: hidden; /* Prevent vertical scrolling */
-  scroll-behavior: smooth; /* Smooth scrolling effect */
-  padding: 10px;
-  height: 100%; /* Match parent height */
-  box-sizing: border-box;
-  min-width: 100%; /* Ensure the container stretches for horizontal scroll */
-  white-space: nowrap; /* Prevent wrapping of child cards */
-  will-change: transform;
+  padding: 1rem 0;
   
-  
-  /* Hide scrollbar */
-  scrollbar-width: none; /* For Firefox */
 }
 
-.featured-cards-container::-webkit-scrollbar {
-height: 8px; /* Adjust scrollbar height */
-display: none;
-}
-
-.featured-cards-container::-webkit-scrollbar-thumb {
-background-color: rgba(255, 255, 255, 0.5); /* Scrollbar color */
-border-radius: 10px; /* Rounded scrollbar */
-}
-
-.featured-cards-container::-webkit-scrollbar-track {
-background: transparent; /* Transparent track */
-}
-
-.featured-card {
-flex: 0 0 auto;
-width: 150px;
-height: 150px;
-background-size: cover;
-background-position: center;
-border-radius: 50%;
-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-display: flex;
-flex-direction: column;
-justify-content: flex-end;
-padding: 10px;
-color: white;
-}
-
-
-
-
-.featured-card-content {
-  background: rgba(0, 0, 0, 0.5);
-  padding: 5px;
-}
-
-.featured-title {
-  font-size: 18px;
+.feature-section-title{
+  font-size: 1.5rem;
   font-weight: bold;
+  margin-bottom: 1.5rem;
+  color: white;
+  
 }
 
-.featured-artist {
-  font-size: 14px;
+.featured-songs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px; /* Add spacing between cards */
+  justify-content: center;
+  align-items: start;
 }
 
-/* Responsive Design */
+.featured-song-container {
+  text-align: center;
+}
+
+.featured-song-card {
+  width: 150px;
+  height: 150px;
+  border-radius: 100px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #f8fafc;
+  margin: 0 auto; /* Center the card */
+}
+
+.featured-song-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.featured-song-details {
+  margin-top: 0.5rem; /* Space between card and text */
+}
+
+.featured-song-name {
+  font-size: 0.8rem;
+  margin: 0.2rem 0;
+  color: #dcdcdc;
+}
+
+.featured-artist-name {
+  font-size: 0.7rem;
+  color: #989797;
+  margin: 0;
+}
+
 @media (max-width: 768px) {
 
-.featured-this-week{
-  margin-top: 200px;
-  position: relative;
- 
-}
+  .featured-this-week{
+    margin-top: 200px;
+  }
+  .featured-songs-grid {
+    display: flex;
+    flex-wrap: nowrap; /* Prevent wrapping */
+    overflow-x: scroll; /* Enable horizontal scrolling */
+    gap: 10px; /* Space between items */
+    justify-content: start; /* Align items to start */
+    padding: 0 10px; /* Add padding to prevent cards from touching the edges */
+  }
 
-.featured-this-week h2{
-  margin-right: 400px;
-}
+  .featured-song-container {
+    flex-shrink: 0; /* Prevent cards from shrinking */
+  }
 
-.featured-row-wrapper {
-  height: auto; /* Adjust height for smaller screens */
-}
+  .featured-song-card {
+    width: 120px; /* Set a smaller width for mobile */
+    height: 120px; /* Set a smaller height for mobile */
+    border-radius: 100px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #f8fafc;
+    margin: 0 auto;
+  }
 
-.featured-cards-container {
-  gap: 10px;
+  .featured-song-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
-}
+  .featured-song-details {
+    margin-top: 0.5rem;
+  }
 
-.featured-card {
-  width: 80px;
-  height: 80px;
-}
+  .featured-song-name {
+    font-size: 0.7rem;
+    margin: 0.2rem 0;
+    color: #dcdcdc;
+  }
+
+  .featured-artist-name {
+    font-size: 0.6rem;
+    color: #989797;
+    margin: 0;
+  }
 }
 
 /* Popular playlist */
 
 .popular-playlists {
   margin: 20px 0;
-  padding: 0 20px;
   color: white;
   position: relative;
 }
@@ -418,4 +412,222 @@ color: white;
 
 }
 
+/* Best of god section */
+
+}
+.best-of-god-songs-section {
+  padding: 1rem 0;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.songs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px; /* Increased gap for better spacing */
+  justify-content: center;
+  align-items: start;
+  margin-left: 20px;
+}
+
+.song-container {
+  text-align: center;
+}
+
+.song-card {
+  width: 150px;
+  height: 150px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #f8fafc;
+  margin: 0 auto; /* Center the card */
+}
+
+.song-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.song-details {
+  margin-top: 0.5rem; /* Space between card and text */
+}
+
+.song-name {
+  font-size: 0.8rem;
+  margin: 0.2rem 0;
+  color: #dcdcdc;
+}
+
+.artist-name {
+  font-size: 0.7rem;
+  color: #989797;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .songs-grid {
+    display: flex;
+    flex-wrap: nowrap; /* Prevent wrapping */
+    overflow-x: scroll; /* Enable horizontal scrolling */
+    gap: 10px; /* Space between items */
+    justify-content: start; /* Align items to start */
+
+    margin-left: 0; /* Remove left margin for mobile */
+    height: 200px; /* Set a fixed height for horizontal scrolling */
+  }
+
+  .song-container {
+    flex-shrink: 0; /* Prevent shrinking */
+  }
+
+  .song-card {
+    width: 120px; /* Smaller card size for mobile */
+    height: 120px; /* Smaller card size for mobile */
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #f8fafc;
+    margin: 0 auto;
+  }
+
+  .song-name {
+    font-size: 0.7rem;
+    margin: 0.2rem 0;
+    color: #dcdcdc;
+  }
+
+  .artist-name {
+    font-size: 0.6rem;
+    color: #989797;
+    margin: 0;
+  }
+}
+.playlist-section {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.playlist-card {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #121212;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  height: 400px; /* Card height */
+}
+
+.playlist-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.playlist-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.playlist-overlay {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 10px;
+  background: linear-gradient(180deg, transparent 60%, rgba(0, 0, 0, 0.8));
+  height: 100%;
+  justify-content: flex-end;
+}
+
+.playlist-header {
+  position: absolute; /* Positioned at the top left */
+  top: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.playlist-cover {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+}
+
+.playlist-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.playlist-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.playlist-subtitle {
+  font-size: 1rem;
+  color: #b3b3b3;
+  margin: 0;
+}
+
+.playlist-details {
+  margin-top: auto; /* Pushes details to the bottom */
+}
+
+.playlist-description {
+  font-size: 0.9rem;
+  margin-bottom: 50px;
+}
+
+.playlist-bg-label {
+  font-size: 0.85rem;
+  color: #b3b3b3;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 767px) {
+
+  .playlist-card{
+    width: 350px;
+  }
+  .playlist-section {
+    display: flex;
+    flex-direction: column; /* Arrange cards vertically */
+    gap: 20px;
+  }
+
+  .playlist-header {
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .playlist-cover {
+    width: 60px; /* Adjust cover size */
+    height: 60px;
+  }
+
+  .playlist-title {
+    font-size: 1.2rem;
+  }
+
+  .playlist-subtitle {
+    font-size: 0.9rem;
+  }
 }

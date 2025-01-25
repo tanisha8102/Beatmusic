@@ -28,3 +28,10 @@ export const artistImages = {
     sadHits: require("./playlist-cover/sad.jpeg"),
   };
   
+  export const songcovers = {
+    godsong1 : require ("./song_covers/Kailash-Ke-Raja-.jpg"),
+    godsong2 : require ("./song_covers/achyutam-keshavam.jpeg"),
+    godsong3 : require ("./song_covers/hamare-sath-shri-raghunath.jpg"),
+    godsong4 : require ("./song_covers/mere-banke-bihari-lal.jpeg"),
+    godsong5 : require ("./song_covers/mere-gahr-raam-aaye-hain.jpg")
+  }
